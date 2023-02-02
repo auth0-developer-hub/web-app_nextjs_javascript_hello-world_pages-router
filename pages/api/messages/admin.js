@@ -1,3 +1,5 @@
+import { withApiAuthRequired } from "@auth0/nextjs-auth0";
+
 const getAdminMessage = async (req, res) => {
   const message = {
     text: "This is an admin message.",
@@ -6,4 +8,4 @@ const getAdminMessage = async (req, res) => {
   res.status(200).json(message);
 };
 
-export default getAdminMessage;
+export default withApiAuthRequired(getAdminMessage);
